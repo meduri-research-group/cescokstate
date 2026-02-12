@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Publications — Center for Energy Conversion and Storage • Dr. Praveen Meduri</title>
+
+  <!-- OSU Brand Fonts (Google Fonts equivalents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --osu-orange:      #FE5C00;
+      --osu-orange-dim:  rgba(254,92,0,0.18);
+      --osu-orange-glow: rgba(254,92,0,0.35);
+      --bg:              #0C0C0E;
+      --bg-card:         rgba(255,255,255,0.04);
+      --border:          rgba(255,255,255,0.08);
+      --border-bright:   rgba(254,92,0,0.30);
+      --text:            #F2F0EC;
+      --text-dim:        rgba(242,240,236,0.65);
+      --text-muted:      rgba(242,240,236,0.40);
+      --nav-h:           64px;
+      --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      --font-display: 'Fjalla One', 'Arial Narrow', sans-serif;
+      --font-body:    'Rubik', 'Helvetica Neue', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(12,12,14,0.88);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .lab-brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1.3;
+      flex-shrink: 0;
+      gap: 2px;
+    }
+    .lab-main {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      background: linear-gradient(90deg, var(--text) 0%, var(--osu-orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lab-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      flex-shrink: 0;
+    }
+    .nav-menu a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-dim);
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-menu a:hover { color: var(--text); background: rgba(255,255,255,0.07); }
+    .nav-menu a.active { color: var(--osu-orange); background: var(--osu-orange-dim); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      padding: 64px 0 30px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 65% 35%, rgba(254,92,0,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 20% 80%, rgba(254,92,0,0.06) 0%, transparent 60%),
+        linear-gradient(175deg, #0C0C0E 0%, #13100D 100%);
+      z-index: 0;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(254,92,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(254,92,0,0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 35%, black, transparent);
+    }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      gap: 12px;
+    }
+    .crumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+      opacity: 0.95;
+    }
+    .crumb::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--osu-orange);
+      border-radius: 999px;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.6vw, 56px);
+      line-height: 1.06;
+      letter-spacing: 0.6px;
+    }
+    .page-title span {
+      background: linear-gradient(135deg, var(--osu-orange) 0%, #FFB347 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 920px;
+    }
+
+    /* ── MAIN ── */
+    .main { padding: 60px 0 0; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .section-title em { color: var(--osu-orange); font-style: normal; }
+    .section-rule {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--osu-orange), transparent);
+      border-radius: 999px;
+    }
+
+    /* ── CARDS ── */
+    .card {
+      border-radius: 20px;
+      padding: 26px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.25s var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: rgba(254,92,0,0.22);
+      background: rgba(254,92,0,0.03);
+      transform: translateY(-2px);
+    }
+    .card h2 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.3px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    /* ── FILTER PILLS ── */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin: 18px 0 24px;
+    }
+    .filter {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+    }
+    .filter:hover {
+      border-color: var(--border-bright);
+      color: var(--text);
+      background: var(--osu-orange-dim);
+      transform: translateY(-1px);
+    }
+    .filter.active {
+      color: var(--osu-orange);
+      background: rgba(254,92,0,0.10);
+      border-color: rgba(254,92,0,0.35);
+    }
+    .filter-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--osu-orange);
+      box-shadow: 0 0 8px var(--osu-orange-glow);
+    }
+
+    /* ── PUB LIST ── */
+    .pub-list { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+    .pub {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 14px 14px;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .pub:hover {
+      border-color: rgba(254,92,0,0.22);
+      background: rgba(254,92,0,0.03);
+    }
+    .pub .a {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .pub .t {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: rgba(242,240,236,0.78);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .pub .c {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .doi {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(254,92,0,0.08);
+      border: 1px solid rgba(254,92,0,0.18);
+      color: var(--text-dim);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.25s var(--ease-out-expo);
+    }
+    .doi:hover {
+      background: rgba(254,92,0,0.16);
+      border-color: rgba(254,92,0,0.40);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .subhead {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .subhead h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 0.3px;
+      color: var(--text);
+    }
+    .subhead span {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 80px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .footer strong { font-family: var(--font-display); color: var(--osu-orange); letter-spacing: 0.3px; }
+    .footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+    .footer a:hover { color: var(--osu-orange); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── HIDE/SHOW (FILTER) ── */
+    [data-kind] { display: block; }
+    .hidden { display: none !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 580px) {
+      .nav-menu { display: none; }
+      .card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="lab-brand" href="index.html">
+        <span class="lab-main">Center for Energy Conversion &amp; Storage</span>
+        <span class="lab-sub">consequi magnitudinem tuam · Oklahoma State University</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html" class="active">Publications</a></li>
+        <li><a href="group.html">Group</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="crumb reveal">Publications</div>
+      <h1 class="page-title reveal">Books, Patents &amp; <span>Journal Articles</span></h1>
+      <p class="page-sub reveal">
+        Selected scholarly outputs including book chapters, patents, and peer-reviewed journal articles
+        (grouped by OSU and prior appointments).
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <div class="section-label">Browse</div>
+        <h2 class="section-title">Publication <em>Categories</em></h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <!-- Filters -->
+      <div class="filters reveal" aria-label="Publication filters">
+        <button class="filter active" data-filter="all" type="button"><span class="filter-dot"></span>All</button>
+        <button class="filter" data-filter="book" type="button"><span class="filter-dot"></span>Book Chapters</button>
+        <button class="filter" data-filter="patent" type="button"><span class="filter-dot"></span>Patents</button>
+        <button class="filter" data-filter="journal" type="button"><span class="filter-dot"></span>Journal Articles</button>
+      </div>
+
+      <!-- Book Chapters -->
+      <section class="card reveal" data-kind="book">
+        <h2>Book Chapters</h2>
+        <div class="pub-list">
+          <div class="pub">
+            <div class="a">Chapter: “Modeling of Nanowire Growth”</div>
+            <div class="t">In <em>Inorganic Nanowires: Applications, Properties, and Characterization</em>, CRC Press (2009).</div>
+          </div>
+          <div class="pub">
+            <div class="a">Chapter: “Applications in the Energy Sector”</div>
+            <div class="t">In <em>Inorganic Nanowires: Applications, Properties, and Characterization</em>, CRC Press (2009).</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Patents -->
+      <section class="card reveal" style="margin-top:18px;" data-kind="patent">
+        <h2>Patents</h2>
+        <div class="pub-list">
+          <div class="pub">
+            <div class="a">M.K. Sunkara, P. Meduri and G.U. Sumanasekera</div>
+            <div class="t">“Anode materials for Lithium-Ion batteries”, US Patent Application 12/650,081 — published Feb. 2, 2012; No: US 2012/0028124 A1.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Journal Articles -->
+      <section class="card reveal" style="margin-top:18px;" data-kind="journal">
+        <h2>Journal Articles</h2>
+        <p>Grouped by current OSU affiliation and publications prior to joining OSU.</p>
+
+        <div class="subhead">
+          <h3>OSU</h3>
+          <span>Selected</span>
+        </div>
+
+        <div class="pub-list">
+          <div class="pub">
+            <div class="a">Rohit Choudhury, Ritesh G. Nayak, Bhabani S. Mallik, Praveen Meduri*</div>
+            <div class="t">Integrated Experimental and Computational Exploration of the Role of Electrolyte Additives in Micron Silicon</div>
+            <div class="c">
+              <span>J. Phys. Chem. C 129, 13894–13902 (2025)</span>
+              <a class="doi" href="https://doi.org/10.1021/acs.jpcc.5c03557" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="subhead">
+          <h3>Before OSU</h3>
+          <span>Selected</span>
+        </div>
+
+        <div class="pub-list">
+          <div class="pub">
+            <div class="a">M. Velpandian, G. Ummethala, S. K. Malladi, Praveen Meduri*</div>
+            <div class="t">Heterogeneous interface induced electrocatalytic efficiency boosting of bimetallic Cu/Zn selenides for stable water oxidation and oxygen reduction reactions</div>
+            <div class="c">
+              <span>Catal. Sci. Technol. 12, 5302–5314 (2022)</span>
+              <a class="doi" href="https://doi.org/10.1039/D2CY00472K" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">M. Velpandian, G. Ummethala, S. K. Malladi, Praveen Meduri*</div>
+            <div class="t">Heterostructures of tin and tungsten selenides for robust overall water splitting</div>
+            <div class="c">
+              <span>J. Colloid Interface Sci. 623, 561–573 (2022)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.jcis.2022.05.052" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">V. S. Katta, M. Velpandian, V. R. Chappidi, M. S. Ahmed, A. Kumar, S. Asthana, Praveen Meduri, S. S. K. Raavi</div>
+            <div class="t">Er3+ doped titania photoanode for enhanced performance of photo-electrochemical water splitting devices</div>
+            <div class="c">
+              <span>Mater. Lett. 302, 130297 (2021)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.matlet.2021.130297" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">V. S. Katta, A. Das, G. Cilaveni, S. Pulipaka, G. Veerappan, E. Ramasamy, Praveen Meduri, S. Asthana, D. Melepurath, S. S. K. Raavi</div>
+            <div class="t">Vacancies induced enhancement in neodymium doped titania photoanodes based sensitized solar cells and photo-electrochemical cells</div>
+            <div class="c">
+              <span>Sol. Energy Mater. Sol. Cells 220, 110843 (2021)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.solmat.2020.110843" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">D. F. Jaramillo-Cabanzo, B. P. Ajayi, Praveen Meduri, M. K. Sunkara</div>
+            <div class="t">One-dimensional nanomaterials in lithium-ion batteries</div>
+            <div class="c">
+              <span>J. Phys. D: Appl. Phys. 54, 083001 (2020)</span>
+              <a class="doi" href="https://doi.org/10.1088/1361-6463/abc3eb" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">S. Pulipaka, N. Boni, Praveen Meduri*</div>
+            <div class="t">Copper Vanadate (Cu3V2O8): (Mo, W) Doping Insights to Enhance Performance as an Anode for Photoelectrochemical Water Splitting</div>
+            <div class="c">
+              <span>ACS Appl. Energy Mater. 3(7), 6060–6064 (2020)</span>
+              <a class="doi" href="https://doi.org/10.1021/acsaem.0c00780" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">M. Velpandian, S. Pulipaka, A. Tikoo, Praveen Meduri*</div>
+            <div class="t">Improved charge carrier dynamics of WS2 nanostructures by the way of CdS@WS2 heterostructures for use in water splitting and water purification</div>
+            <div class="c">
+              <span>Sustainable Energy Fuels 4, 4096–4107 (2020)</span>
+              <a class="doi" href="https://doi.org/10.1039/D0SE00533A" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">S. Pulipaka, N. Boni, G. Ummethala, Praveen Meduri*</div>
+            <div class="t">CuO/CuBi2O4 heterojunction photocathode: High stability and current densities for solar water splitting</div>
+            <div class="c">
+              <span>J. Catal. 387, 17–27 (2020)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.jcat.2020.04.001" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">S. Pulipaka, AKS Koushik, N. Boni, M. Deepa, Praveen Meduri*</div>
+            <div class="t">Tin disulfide based ternary composites for visible light driven photoelectrochemical water splitting</div>
+            <div class="c">
+              <span>Int. J. Hydrogen Energy 44(23), 11584–11592 (2019)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.ijhydene.2019.03.135" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">S. Pulipaka, AKS Koushik, M. Deepa, Praveen Meduri*</div>
+            <div class="t">Enhanced photoelectrochemical activity of Co-doped β-In2S3 nanoflakes as photoanodes for water splitting</div>
+            <div class="c">
+              <span>RSC Advances 9(3), 1335–1340 (2019)</span>
+              <a class="doi" href="https://doi.org/10.1039/C8RA09660K" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Radha Mukkabla, Sathish Deshagani, Praveen Meduri, Melepurath Deepa, Partha Ghosal</div>
+            <div class="t">Selenium/Graphite Platelet Nanofiber Composite for Durable Li–Se Batteries</div>
+            <div class="c">
+              <span>ACS Energy Lett. 2(6), 1288–1295 (2017)</span>
+              <a class="doi" href="https://doi.org/10.1021/acsenergylett.7b00251" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Radha Mukkabla, Praveen Meduri, Melepurath Deepa, SM Shivaprasad, Partha Ghosal</div>
+            <div class="t">Sulfur enriched carbon nanotubols with a Poly (3, 4-ethylenedioxypyrrole) coating as cathodes for long-lasting Li-S batteries</div>
+            <div class="c">
+              <span>J. Power Sources 342, 202–213 (2017)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.jpowsour.2016.12.062" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Liwen Ji, Praveen Meduri, Victor Agubra, Xingcheng Xiao, Mataz Alcoutlabi</div>
+            <div class="t">Graphene-based Nanocomposites for Energy Storage</div>
+            <div class="c">
+              <span>Adv. Energy Mater. 1502159, 1–73 (2016)</span>
+              <a class="doi" href="https://doi.org/10.1002/aenm.201502159" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Radha Mukkabla, Praveen Meduri, Melepurath Deepa and Partha Ghosal</div>
+            <div class="t">Durable Li-S batteries with nano-sulfur/graphite nanoplatelets composites</div>
+            <div class="c">
+              <span>Chem. Eng. J. 303, 369–383 (2016)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.cej.2016.05.146" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Ismail Alperen Ayhan, Qi Li, Praveen Meduri, Hyukkeun Oh, Ganesh R. Bhimanapati, Guang Yang, Joshua A. Robinson, Qing Wang</div>
+            <div class="t">Effect of Mn3O4 nanoparticle composition and distribution on graphene as a potential hybrid anode material for lithium-ion batteries</div>
+            <div class="c">
+              <span>RSC Adv. 6, 33022 (2016)</span>
+              <a class="doi" href="https://doi.org/10.1039/C5RA27343A" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Dimitri D Vaughn II, Jose Araujo, Praveen Meduri, Juan F Callejas, Michael A Hickner, Raymond E Schaak</div>
+            <div class="t">Solution Synthesis of Cu3PdN Nanocrystals as Ternary Metal Nitride Electrocatalysts for the Oxygen Reduction Reaction</div>
+            <div class="c">
+              <span>Chem. Mater. 26(21), 6226 (2014)</span>
+              <a class="doi" href="https://doi.org/10.1021/cm5029723" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Ju-Won Jeon, Ronish Sharma, Praveen Meduri, Manjula I. Nandasiri, Bruce W. Arey, John P Lemmon, Jodie L. Lutkenhaus, Satish Nune</div>
+            <div class="t">In Situ One-Step Synthesis of Hierarchical Nitrogen-Doped Porous Carbon for High-Performance Supercapacitors</div>
+            <div class="c">
+              <span>ACS Appl. Mater. Interfaces 6(10), 7214 (2014)</span>
+              <a class="doi" href="https://doi.org/10.1021/am500339x" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Jie Xiao, Praveen Meduri, Honghao Chen, Zhiguo Wang, Fei Gao, Jianzhi Hu, Ju Feng, Mary Hu, Sheng Dai, Suree Brown, Jamie L. Adcock, Zhiqun Deng, Jun Liu, Gordon L. Graff, Ilhan A. Aksay, Ji-Guang Zhang</div>
+            <div class="t">Energetics of Defects on Graphene through Fluorination (Equal authorship)</div>
+            <div class="c">
+              <span>ChemSusChem 7(5), 1295 (2014)</span>
+              <a class="doi" href="https://doi.org/10.1002/cssc.201301066" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Praveen Meduri, Honghao Chen, Jie Xiao, Jayson J. Martinez, Thomas Carlson, Ji-Guang Zhang, Zhiqun Deng</div>
+            <div class="t">Tunable Electrochemical Properties of Fluorinated Graphene</div>
+            <div class="c">
+              <span>J. Mater. Chem. A 1, 7866 (2013)</span>
+              <a class="doi" href="https://doi.org/10.1039/C3TA11710C" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Jianming Zheng, Meng Gu, Honghao Chen, Praveen Meduri, Mark H. Engelhard, Ji-Guang Zhang, Jun Liu and Jie Xiao</div>
+            <div class="t">Ionic Liquid-Enhanced Solid State Electrolyte Interface (SEI) for Lithium-Sulfur Batteries</div>
+            <div class="c">
+              <span>J. Mater. Chem. A 1, 8464 (2013)</span>
+              <a class="doi" href="https://doi.org/10.1039/C3TA10306D" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Xilin Chen, Xiaolin Li, Fei Ding, Wu Xu, Jie Xiao, Yuliang Cao, Praveen Meduri, Jun Liu, Gordon Graff, Ji-Guang Zhang</div>
+            <div class="t">Conductive Rigid Skeleton Supported Silicon as High-Performance Li-ion Battery Anodes</div>
+            <div class="c">
+              <span>Nano Lett. 12(8), 4124 (2012)</span>
+              <a class="doi" href="https://doi.org/10.1021/nl301657y" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Xiaolin Li, Praveen Meduri, Xilin Chen, Wen Qi, Mark H Engelhard, Wu Xu, Fei Ding, Jie Xiao, Wei Wang, Chongmin Wang, Ji-Guang Zhang and Jun Liu</div>
+            <div class="t">Hollow Core-Shell Structured Porous Si-C Nanocomposites for Li-Ion Battery Anodes</div>
+            <div class="c">
+              <span>J. Mater. Chem. 22, 11014 (2012)</span>
+              <a class="doi" href="https://doi.org/10.1039/C2JM31286G" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Praveen Meduri, Ezra Clark, Jeong H. Kim, Gamini U. Sumanasekera and Mahendra K. Sunkara</div>
+            <div class="t">MoO3-x Nanowire Arrays As Stable High-Capacity Anodes for Lithium Ion Batteries</div>
+            <div class="c">
+              <span>Nano Lett. 12(4), 1784 (2012)</span>
+              <a class="doi" href="https://doi.org/10.1021/nl203649p" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Praveen Meduri, Honghao Chen, Xilin Chen, Jie Xiao, Mark E. Gross, Thomas J. Carlson, Ji-Guang Zhang, and Z. Daniel Deng</div>
+            <div class="t">Hybrid CFx-Ag2V4O11 as a high-energy, power density cathode for application in an underwater acoustic microtransmitter</div>
+            <div class="c">
+              <span>Electrochem. Commun. 13(12), 1344 (2011)</span>
+              <a class="doi" href="https://doi.org/10.1016/j.elecom.2011.08.006" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">M. K. Sunkara, C. Pendyala, D. Cummins, Praveen Meduri, J. Jasinski, V. Kumar, H. B. Russell, E. L. Clark and J. H. Kim</div>
+            <div class="t">Inorganic nanowires: a perspective about their role in energy conversion and storage applications</div>
+            <div class="c">
+              <span>J. Phys. D: Appl. Phys. 44, 174032 (2011)</span>
+              <!-- DOI in your text looked like a meeting abstract number; leaving as citation only (no DOI button). -->
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Praveen Meduri, Ezra Clark, Ethirajulu Dayalan, Gamini U. Sumanasekera and Mahendra K. Sunkara</div>
+            <div class="t">Kinetically limited de-lithiation behavior of nanoscale tin-covered tin oxide nanowires</div>
+            <div class="c">
+              <span>Energy Environ. Sci. 4, 1695 (2011)</span>
+              <a class="doi" href="https://doi.org/10.1039/C1EE01041G" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Praveen Meduri, Jeong H. Kim, Harry R. Benjamin, Jacek Jasinksi, Gamini U. Sumanasekera, and Mahendra K. Sunkara</div>
+            <div class="t">Thin-Walled Carbon Microtubes as High-Capacity and High-Rate Anodes in Lithium-Ion Batteries</div>
+            <div class="c">
+              <span>J. Phys. Chem. C 114, 10621 (2010)</span>
+              <a class="doi" href="https://doi.org/10.1021/jp100422f" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Praveen Meduri, Chandrashekhar Pendyala, Vivekanand Kumar, Gamini U. Sumanasekera, and Mahendra K. Sunkara</div>
+            <div class="t">Hybrid Tin Oxide Nanowires as Stable and High Capacity Anodes for Li-ion Batteries</div>
+            <div class="c">
+              <span>Nano Lett. 9(2), 612 (2009)</span>
+              <a class="doi" href="https://doi.org/10.1021/nl802864a" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">Praveen Meduri, G. U. Sumanasekera, Z. Chen, and M. K. Sunkara</div>
+            <div class="t">Composition Controlled Synthesis and Raman Analysis of Ge-rich SixGe1-x Nanowires</div>
+            <div class="c">
+              <span>J. Nanosci. Nanotechn. 8, 3153 (2008)</span>
+              <a class="doi" href="https://doi.org/10.1166/jnn.2008.194" target="_blank" rel="noopener">DOI</a>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="a">S. Dumpala, G. Bhimarasetti, S. Gubbala, Praveen Meduri, S. Kona, and M. K. Sunkara</div>
+            <div class="t">Carbon Microtubes and Conical Carbon Nanotubes</div>
+            <div class="c">
+              <span>In <em>Smart Materials</em>, edited by M. Schwartz (2008)</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 <strong>Center for Energy Conversion and Storage</strong> · Oklahoma State University ·
+      <a href="https://github.com" target="_blank" rel="noopener">Hosted on GitHub Pages</a>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    // Reveal blocks
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Filtering
+    const filters = Array.from(document.querySelectorAll('.filter'));
+    const blocks = Array.from(document.querySelectorAll('[data-kind]'));
+
+    function setFilter(kind) {
+      filters.forEach(b => b.classList.toggle('active', b.dataset.filter === kind));
+      blocks.forEach(el => {
+        const match = (kind === 'all') || (el.dataset.kind === kind);
+        el.classList.toggle('hidden', !match);
+      });
+    }
+
+    filters.forEach(btn => {
+      btn.addEventListener('click', () => setFilter(btn.dataset.filter));
+    });
+  </script>
+
+</body>
+</html>

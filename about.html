@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>About — Center for Energy Conversion and Storage • Dr. Praveen Meduri</title>
+
+  <!-- OSU Brand Fonts (Google Fonts equivalents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --osu-orange:      #FE5C00;
+      --osu-orange-dim:  rgba(254,92,0,0.18);
+      --osu-orange-glow: rgba(254,92,0,0.35);
+      --bg:              #0C0C0E;
+      --bg-card:         rgba(255,255,255,0.04);
+      --border:          rgba(255,255,255,0.08);
+      --border-bright:   rgba(254,92,0,0.30);
+      --text:            #F2F0EC;
+      --text-dim:        rgba(242,240,236,0.65);
+      --text-muted:      rgba(242,240,236,0.40);
+      --nav-h:           64px;
+      --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+
+      --font-display: 'Fjalla One', 'Arial Narrow', sans-serif;
+      --font-body:    'Rubik', 'Helvetica Neue', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(12,12,14,0.88);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .lab-brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1.3;
+      flex-shrink: 0;
+      gap: 2px;
+    }
+    .lab-main {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      background: linear-gradient(90deg, var(--text) 0%, var(--osu-orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lab-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      flex-shrink: 0;
+    }
+    .nav-menu a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-dim);
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-menu a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.07);
+    }
+    .nav-menu a.active {
+      color: var(--osu-orange);
+      background: var(--osu-orange-dim);
+    }
+
+    /* ── PAGE HERO (ABOUT) ── */
+    .page-hero {
+      position: relative;
+      padding: 64px 0 28px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 65% 35%, rgba(254,92,0,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 20% 80%, rgba(254,92,0,0.06) 0%, transparent 60%),
+        linear-gradient(175deg, #0C0C0E 0%, #13100D 100%);
+      z-index: 0;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(254,92,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(254,92,0,0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 35%, black, transparent);
+    }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .crumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+      opacity: 0.95;
+    }
+    .crumb::before {
+      content: '';
+      width: 22px;
+      height: 2px;
+      background: var(--osu-orange);
+      border-radius: 999px;
+    }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.6vw, 56px);
+      line-height: 1.06;
+      letter-spacing: 0.6px;
+    }
+    .page-title span {
+      background: linear-gradient(135deg, var(--osu-orange) 0%, #FFB347 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 860px;
+    }
+
+    /* ── MAIN ── */
+    .main { padding: 52px 0 0; }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .section-title em { color: var(--osu-orange); font-style: normal; }
+    .section-rule {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--osu-orange), transparent);
+      border-radius: 999px;
+    }
+    .section-quote {
+      margin-top: 12px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+
+    /* ── CARDS / GRID ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .card {
+      border-radius: 20px;
+      padding: 28px 30px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.25s var(--ease-out-expo);
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover {
+      border-color: rgba(254,92,0,0.22);
+      background: rgba(254,92,0,0.03);
+      transform: translateY(-2px);
+    }
+    .card h2 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.3px;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .card p:last-child { margin-bottom: 0; }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-dim);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+    }
+    .pill:hover {
+      border-color: var(--border-bright);
+      color: var(--text);
+      background: var(--osu-orange-dim);
+    }
+    .pill-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--osu-orange);
+      box-shadow: 0 0 6px var(--osu-orange);
+    }
+
+    /* ── TIMELINE LIST ── */
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .item {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 14px 14px;
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 12px;
+      transition: border-color 0.25s ease, background 0.25s ease;
+    }
+    .item:hover {
+      border-color: rgba(254,92,0,0.22);
+      background: rgba(254,92,0,0.03);
+    }
+    .dot {
+      width: 10px; height: 10px;
+      margin-top: 4px;
+      border-radius: 50%;
+      background: var(--osu-orange);
+      box-shadow: 0 0 10px var(--osu-orange-glow);
+    }
+    .item h3 {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 3px;
+    }
+    .meta {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── CONTACT BLOCK ── */
+    .contact-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .contact-line {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .contact-line strong {
+      font-family: var(--font-body);
+      font-weight: 600;
+      color: var(--text);
+      min-width: 64px;
+    }
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(254,92,0,0.08);
+      border: 1px solid rgba(254,92,0,0.20);
+      color: var(--text);
+      text-decoration: none;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all 0.25s var(--ease-out-expo);
+    }
+    .btn:hover {
+      background: rgba(254,92,0,0.16);
+      border-color: rgba(254,92,0,0.40);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(254,92,0,0.12);
+    }
+    .btn svg { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 80px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .footer strong { font-family: var(--font-display); color: var(--osu-orange); letter-spacing: 0.3px; }
+    .footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+    .footer a:hover { color: var(--osu-orange); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .nav-menu { gap: 2px; }
+    }
+    @media (max-width: 580px) {
+      .nav-menu { display: none; }
+      .card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="lab-brand" href="index.html">
+        <span class="lab-main">Center for Energy Conversion &amp; Storage</span>
+        <span class="lab-sub">consequi magnitudinem tuam · Oklahoma State University</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="group.html">Group</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="crumb reveal">About</div>
+      <h1 class="page-title reveal">Dr. Praveen <span>Meduri</span></h1>
+      <p class="page-sub reveal">
+        An ardent chemical engineer with extensive expertise in electrochemistry, functional materials and catalysis.
+        Detailed research activities are listed in the next section. I am quite keen to collaborate with academicians
+        and people from industry; please get in touch with me if our interests match.
+      </p>
+      <div class="pill-row reveal">
+        <span class="pill"><span class="pill-dot"></span>Electrochemistry</span>
+        <span class="pill"><span class="pill-dot"></span>Functional Materials</span>
+        <span class="pill"><span class="pill-dot"></span>Catalysis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <div class="section-label">Profile</div>
+        <h2 class="section-title">Background &amp; <em>Positions</em></h2>
+        <div class="section-rule"></div>
+        <p class="section-quote">Collaboration-driven research at the Energy–Water–Food nexus.</p>
+      </div>
+
+      <div class="grid-2">
+
+        <!-- LEFT: SUMMARY + EDUCATION -->
+        <div class="card reveal">
+          <h2>Summary</h2>
+          <p>
+            An ardent chemical engineer with extensive expertise in electrochemistry, functional materials and catalysis.
+            Detailed research activities are listed in the next section. I am quite keen to collaborate with academicians
+            and people from industry; please get in touch with me if our interests match.
+          </p>
+
+          <h2 style="margin-top:18px;">Education</h2>
+          <ul class="list">
+            <li class="item">
+              <span class="dot"></span>
+              <div>
+                <h3>PhD, Chemical Engineering</h3>
+                <div class="meta">University of Louisville, Louisville, Kentucky — December 2010</div>
+              </div>
+            </li>
+            <li class="item">
+              <span class="dot"></span>
+              <div>
+                <h3>MS, Chemical Engineering</h3>
+                <div class="meta">University of Akron, Akron, Ohio — December 2005</div>
+              </div>
+            </li>
+            <li class="item">
+              <span class="dot"></span>
+              <div>
+                <h3>BE (Hons.), Chemical Engineering</h3>
+                <div class="meta">Birla Institute of Technology and Science (BITS), Pilani, India — July 2003</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RIGHT: EXPERIENCE + CONTACT -->
+        <div style="display:flex; flex-direction:column; gap:18px;">
+
+          <div class="card reveal">
+            <h2>Experience</h2>
+            <ul class="list">
+              <li class="item">
+                <span class="dot"></span>
+                <div>
+                  <h3>Assistant Professor, Oklahoma State University</h3>
+                  <div class="meta">Stillwater, OK — Aug 2024 – Present</div>
+                </div>
+              </li>
+              <li class="item">
+                <span class="dot"></span>
+                <div>
+                  <h3>Research Engineer, Advanced Energy Materials LLC</h3>
+                  <div class="meta">Louisville, KY — Aug 2023 – Jul 2024</div>
+                </div>
+              </li>
+              <li class="item">
+                <span class="dot"></span>
+                <div>
+                  <h3>Associate Professor, IIT Hyderabad</h3>
+                  <div class="meta">Hyderabad, India — Sep 2020 – Jul 2023</div>
+                </div>
+              </li>
+              <li class="item">
+                <span class="dot"></span>
+                <div>
+                  <h3>Assistant Professor, IIT Hyderabad</h3>
+                  <div class="meta">Hyderabad, India — Nov 2014 – Aug 2020</div>
+                </div>
+              </li>
+              <li class="item">
+                <span class="dot"></span>
+                <div>
+                  <h3>PSIEE Post-doctoral Fellow, Pennsylvania State University</h3>
+                  <div class="meta">State College, PA — Feb 2013 – Sep 2014</div>
+                </div>
+              </li>
+              <li class="item">
+                <span class="dot"></span>
+                <div>
+                  <h3>Post-doctoral Research Associate, Pacific Northwest National Laboratory</h3>
+                  <div class="meta">Richland, WA — Jan 2011 – Jan 2013</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="card reveal">
+            <h2>Contact</h2>
+
+            <div class="contact-lines">
+              <div class="contact-line"><strong>Name</strong> <span>Praveen Meduri</span></div>
+              <div class="contact-line"><strong>Office</strong>
+                <span>
+                  420 Engineering North,<br/>
+                  The School of Chemical Engineering, Oklahoma State University,<br/>
+                  Stillwater, OK, US — 74078.
+                </span>
+              </div>
+              <div class="contact-line"><strong>Email</strong> <span>praveen.meduri [at] okstate.edu</span></div>
+              <div class="contact-line"><strong>Phone</strong> <span>+1-405-744-9763</span></div>
+            </div>
+
+            <div class="contact-actions">
+              <a class="btn" href="mailto:praveen.meduri@okstate.edu">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/>
+                </svg>
+                Email
+              </a>
+              <a class="btn" href="research.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 2v6l-5 9a4 4 0 0 0 3.5 6h7A4 4 0 0 0 19 17l-5-9V2"/><path d="M8 14h8"/>
+                </svg>
+                View Research
+              </a>
+              <a class="btn" href="contact.html">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 6-9 13-9 13S3 16 3 10a9 9 0 0 1 18 0Z"/><path d="M12 10a2 2 0 0 0 0-4 2 2 0 0 0 0 4Z"/>
+                </svg>
+                Directions
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 <strong>Center for Energy Conversion and Storage</strong> · Oklahoma State University ·
+      <a href="https://github.com" target="_blank" rel="noopener">Hosted on GitHub Pages</a>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>

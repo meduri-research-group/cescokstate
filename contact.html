@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact — Center for Energy Conversion and Storage • Dr. Praveen Meduri</title>
+
+  <!-- OSU Brand Fonts (Google Fonts equivalents) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --osu-orange:      #FE5C00;
+      --osu-orange-dim:  rgba(254,92,0,0.18);
+      --osu-orange-glow: rgba(254,92,0,0.35);
+      --bg:              #0C0C0E;
+      --bg-card:         rgba(255,255,255,0.04);
+      --border:          rgba(255,255,255,0.08);
+      --border-bright:   rgba(254,92,0,0.30);
+      --text:            #F2F0EC;
+      --text-dim:        rgba(242,240,236,0.65);
+      --text-muted:      rgba(242,240,236,0.40);
+      --nav-h:           64px;
+      --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+
+      --font-display: 'Fjalla One', 'Arial Narrow', sans-serif;
+      --font-body:    'Rubik', 'Helvetica Neue', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(12,12,14,0.88);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .lab-brand {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--text);
+      line-height: 1.3;
+      flex-shrink: 0;
+      gap: 2px;
+    }
+    .lab-main {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      background: linear-gradient(90deg, var(--text) 0%, var(--osu-orange) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lab-sub {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      list-style: none;
+      flex-shrink: 0;
+    }
+    .nav-menu a {
+      font-family: var(--font-body);
+      font-weight: 500;
+      text-decoration: none;
+      color: var(--text-dim);
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      transition: color 0.2s ease, background 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-menu a:hover { color: var(--text); background: rgba(255,255,255,0.07); }
+    .nav-menu a.active { color: var(--osu-orange); background: var(--osu-orange-dim); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      padding: 64px 0 30px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 65% 35%, rgba(254,92,0,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 60% at 20% 80%, rgba(254,92,0,0.06) 0%, transparent 60%),
+        linear-gradient(175deg, #0C0C0E 0%, #13100D 100%);
+      z-index: 0;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(254,92,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(254,92,0,0.035) 1px, transparent 1px);
+      background-size: 72px 72px;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 35%, black, transparent);
+    }
+    .page-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+      display: grid;
+      gap: 12px;
+    }
+    .crumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+      opacity: 0.95;
+    }
+    .crumb::before { content: ''; width: 22px; height: 2px; background: var(--osu-orange); border-radius: 999px; }
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.6vw, 56px);
+      line-height: 1.06;
+      letter-spacing: 0.6px;
+    }
+    .page-title span {
+      background: linear-gradient(135deg, var(--osu-orange) 0%, #FFB347 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      max-width: 920px;
+    }
+
+    /* ── MAIN ── */
+    .main { padding: 60px 0 0; }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.1;
+      letter-spacing: 0.5px;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .section-title em { color: var(--osu-orange); font-style: normal; }
+    .section-rule {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--osu-orange), transparent);
+      border-radius: 999px;
+    }
+
+    /* ── GRID + CARDS ── */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .card {
+      border-radius: 20px;
+      padding: 26px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.25s var(--ease-out-expo);
+    }
+    .card:hover {
+      border-color: rgba(254,92,0,0.22);
+      background: rgba(254,92,0,0.03);
+      transform: translateY(-2px);
+    }
+    .card h2 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .muted {
+      font-family: var(--font-body);
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT LINES ── */
+    .info {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .row:last-child { border-bottom: none; padding-bottom: 0; }
+    .k {
+      min-width: 92px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+      font-weight: 700;
+    }
+    .v {
+      color: rgba(242,240,236,0.82);
+      font-size: 14px;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+    .v a {
+      color: rgba(242,240,236,0.82);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(254,92,0,0.35);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .v a:hover { color: var(--osu-orange); border-color: rgba(254,92,0,0.75); }
+
+    /* ── FORM ── */
+    form { margin-top: 12px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { display: grid; gap: 8px; }
+    label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--osu-orange);
+    }
+    input, textarea {
+      width: 100%;
+      border-radius: 14px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--text);
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 14px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    textarea { min-height: 140px; resize: vertical; }
+    input:focus, textarea:focus {
+      border-color: rgba(254,92,0,0.45);
+      background: rgba(254,92,0,0.05);
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1px solid rgba(254,92,0,0.25);
+      background: rgba(254,92,0,0.10);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: transform 0.2s var(--ease-out-expo), border-color 0.2s ease, background 0.2s ease;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(254,92,0,0.45);
+      background: rgba(254,92,0,0.16);
+    }
+    .btn.secondary {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: rgba(242,240,236,0.82);
+    }
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.18);
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 80px;
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .footer strong { font-family: var(--font-display); color: var(--osu-orange); letter-spacing: 0.3px; }
+    .footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s ease; }
+    .footer a:hover { color: var(--osu-orange); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 580px) {
+      .nav-menu { display: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .card { padding: 22px 20px; }
+      .k { min-width: 82px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="lab-brand" href="index.html">
+        <span class="lab-main">Center for Energy Conversion &amp; Storage</span>
+        <span class="lab-sub">consequi magnitudinem tuam · Oklahoma State University</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="group.html">Group</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="crumb reveal">Contact</div>
+      <h1 class="page-title reveal">Get in <span>Touch</span></h1>
+      <p class="page-sub reveal">
+        For collaborations, prospective student inquiries, and general questions, please use the form below or contact us directly.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Professor &amp; Lab <em>Details</em></h2>
+        <div class="section-rule"></div>
+      </div>
+
+      <div class="grid">
+
+        <!-- Left: Info -->
+        <section class="card reveal">
+          <h2>Direct Contact</h2>
+          <p class="muted">You can update these later with the official lab email/links (Scholar, ORCID, CV PDF, etc.).</p>
+
+          <div class="info">
+            <div class="row">
+              <div class="k">Professor</div>
+              <div class="v">Dr. Praveen Meduri</div>
+            </div>
+            <div class="row">
+              <div class="k">Email</div>
+              <div class="v"><a href="mailto:praveen.meduri@okstate.edu">praveen.meduri@okstate.edu</a></div>
+            </div>
+            <div class="row">
+              <div class="k">Phone</div>
+              <div class="v"><a href="tel:+14057449763">+1-405-744-9763</a></div>
+            </div>
+            <div class="row">
+              <div class="k">Lab</div>
+              <div class="v">
+                236 ATRC<br/>
+                Oklahoma State University<br/>
+                Stillwater, Oklahoma
+              </div>
+            </div>
+            <div class="row">
+              <div class="k">Maps</div>
+              <div class="v">
+                <a href="https://www.google.com/maps/search/?api=1&query=236%20ATRC%20Oklahoma%20State%20University%20Stillwater%20Oklahoma" target="_blank" rel="noopener">
+                  Open in Google Maps
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions" style="margin-top:14px;">
+            <a class="btn secondary" href="mailto:praveen.meduri@okstate.edu?subject=Inquiry%20—%20Center%20for%20Energy%20Conversion%20and%20Storage">Email now</a>
+            <a class="btn secondary" href="research.html">Explore research</a>
+          </div>
+        </section>
+
+        <!-- Right: Form -->
+        <section class="card reveal">
+          <h2>Send a Message</h2>
+          <p class="muted">
+            This form uses your email app (works on GitHub Pages). Fill it out and click “Prepare Email”.
+          </p>
+
+          <form id="contactForm">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your full name" required/>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@email.com" required/>
+              </div>
+            </div>
+
+            <div class="field" style="margin-top:12px;">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="Collaboration / Joining the lab / Question" required/>
+            </div>
+
+            <div class="field" style="margin-top:12px;">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <div class="actions">
+              <button class="btn" type="submit">Prepare Email →</button>
+              <button class="btn secondary" type="button" id="clearBtn">Clear</button>
+              <span class="muted" style="font-size:12px;">Tip: include your CV/Resume in the email if applying.</span>
+            </div>
+          </form>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      © 2026 <strong>Center for Energy Conversion and Storage</strong> · Oklahoma State University ·
+      <a href="https://github.com" target="_blank" rel="noopener">Hosted on GitHub Pages</a>
+    </div>
+  </footer>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Mailto form (GitHub Pages friendly)
+    const form = document.getElementById('contactForm');
+    const clearBtn = document.getElementById('clearBtn');
+
+    function enc(s) { return encodeURIComponent(s || ''); }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const body =
+        `Name: ${name}\n` +
+        `Email: ${email}\n\n` +
+        `${message}\n`;
+
+      const mailto = `mailto:praveen.meduri@okstate.edu?subject=${enc(subject)}&body=${enc(body)}`;
+      window.location.href = mailto;
+    });
+
+    clearBtn.addEventListener('click', () => {
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
